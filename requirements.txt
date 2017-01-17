@@ -1,0 +1,8 @@
+Flask==0.11.1
+flask-marshmallow==0.7.0
+Flask-SQLAlchemy==2.1
+marshmallow==2.10.3
+marshmallow-sqlalchemy==0.12.0
+simplejson==3.10.0
+SQLAlchemy==1.1.3
+waitress==1.0.1
