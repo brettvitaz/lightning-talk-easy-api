@@ -44,8 +44,15 @@ ma = Marshmallow(app)
 
 
 class PokemonSchema(ma.ModelSchema):
+    types = ma.Nested('TypeSchema', many=True)
+
     class Meta:
         model = Pokemon
+
+
+class TypeSchema(ma.ModelSchema):
+    class Meta:
+        model = Type
 
 
 @app.route('/api/pokemon')
