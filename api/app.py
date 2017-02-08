@@ -1,6 +1,8 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
+from api.import_data import import_from_file
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///pokedex.sqlite'
 
@@ -29,3 +31,10 @@ class Type(db.Model):
 class PokemonType(db.Model):
     pokemon_id = db.Column(db.Integer, db.ForeignKey(Pokemon.id), primary_key=True)
     type_id = db.Column(db.Integer, db.ForeignKey(Type.id), primary_key=True)
+
+
+db.create_all()
+
+import_from_file(db, Pokemon)
+import_from_file(db, Type)
+import_from_file(db, PokemonType)
