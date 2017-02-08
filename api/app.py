@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_marshmallow import Marshmallow
 
 from api.import_data import import_from_file
 
@@ -38,3 +39,5 @@ db.create_all()
 import_from_file(db, Pokemon)
 import_from_file(db, Type)
 import_from_file(db, PokemonType)
+
+ma = Marshmallow(app)
