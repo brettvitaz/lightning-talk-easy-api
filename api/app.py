@@ -65,7 +65,7 @@ def route_pokemon():
 @app.route('/api/pokemon/<int:pokemon_id>')
 def route_pokemon_id(pokemon_id):
     pokemon_schema = PokemonSchema()
-    pokemon = Pokemon.query.get(pokemon_id)
+    pokemon = Pokemon.query.get_or_404(pokemon_id)
     return pokemon_schema.jsonify(pokemon)
 
 
