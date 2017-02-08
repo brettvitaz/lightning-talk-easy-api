@@ -69,5 +69,12 @@ def route_pokemon_id(pokemon_id):
     return pokemon_schema.jsonify(pokemon)
 
 
+@app.route('/api/pokemon/page/<int:page>')
+def route_pokemon_page(page):
+    pokemon_schema = PokemonSchema(many=True)
+    all_pokemon = Pokemon.query.paginate(page=page, per_page=10)
+    return pokemon_schema.jsonify(all_pokemon.items)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
