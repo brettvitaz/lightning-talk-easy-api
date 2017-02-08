@@ -46,3 +46,14 @@ ma = Marshmallow(app)
 class PokemonSchema(ma.ModelSchema):
     class Meta:
         model = Pokemon
+
+
+@app.route('/api/pokemon')
+def route_pokemon():
+    pokemon_schema = PokemonSchema(many=True)
+    all_pokemon = Pokemon.query.all()
+    return pokemon_schema.jsonify(all_pokemon)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
