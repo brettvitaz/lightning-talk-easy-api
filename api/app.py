@@ -17,6 +17,8 @@ class Pokemon(db.Model):
     cp_max = db.Column(db.Integer)
     category = db.Column(db.String)
 
+    types = db.relationship('Type', secondary='pokemon_type')
+
 
 class Type(db.Model):
     id = db.Column(db.Integer, primary_key=True)
