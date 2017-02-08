@@ -41,3 +41,8 @@ import_from_file(db, Type)
 import_from_file(db, PokemonType)
 
 ma = Marshmallow(app)
+
+
+class PokemonSchema(ma.ModelSchema):
+    class Meta:
+        model = Pokemon
