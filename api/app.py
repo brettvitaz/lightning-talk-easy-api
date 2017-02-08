@@ -5,3 +5,25 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///pokedex.sqlite'
 
 db = SQLAlchemy(app)
+
+
+class Pokemon(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String)
+    description = db.Column(db.Text)
+    stamina = db.Column(db.Integer)
+    attack = db.Column(db.Integer)
+    defense = db.Column(db.Integer)
+    cp_max = db.Column(db.Integer)
+    category = db.Column(db.String)
+
+
+class Type(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String)
+    description = db.Column(db.Text)
+
+
+class PokemonType(db.Model):
+    pokemon_id = db.Column(db.Integer, db.ForeignKey(Pokemon.id), primary_key=True)
+    type_id = db.Column(db.Integer, db.ForeignKey(Type.id), primary_key=True)
